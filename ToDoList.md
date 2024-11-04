@@ -1,1 +1,2 @@
-- [] test
+- [] Figure out the limit of requests you can make
+- [] create a delay function or function that prevents too many requests.
