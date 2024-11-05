@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>GOOGLE BOOKS API</title>
+    <title>GOODER READS</title>
     <meta charset="UTF-8">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <h1>Book Finder</h1>
+    <h1 id="header">Book Finder</h1>
     <input id="search" placeholder="Title or Author">
     <button id="button" type="button">Search</button> 
 
@@ -19,10 +19,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="main.js"></script>
 
+    <!-- observations for later: link example: 
+     https://www.google.com/books/edition/Harry_Potter_and_the_Sorcerer_s_Stone/wrOQLV6xB-wC?hl=en&gbpv=0
+
+     - can get rid of everything after the id: ?hl=en&gbpv=0
+     - title of book is not case sensitive.
+    -->
+
     <script id="template" type="text/x-handlebars-template">
-        {{#each items}} 
-            <h2>{{volumeInfo.title}}</h2>
-        {{/each}}
+        <div class="bookContainer">
+            {{#each items}} 
+                <div class="book">
+                    <a href='{{generateLink volumeInfo.title id}}'>
+                        <img src="{{volumeInfo.imageLinks.thumbnail}}">
+                    </a>
+                </div>
+            {{/each}}
+        </div>
     </script>
 </body>
 

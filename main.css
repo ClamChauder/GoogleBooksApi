@@ -1,0 +1,21 @@
+#header{
+    text-align: center;
+}
+#button{
+    margin: 20px;
+}
+.book{
+    width: 12%;
+    height: 30%;
+    text-align: center;
+}
+.bookContainer{
+    margin: 0 10%;
+    height: 90vh;
+    gap: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    border: 1px solid white;
+}
