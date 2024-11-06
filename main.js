@@ -1,3 +1,12 @@
+//loads data that was previously saved from the previous search
+window.onload = function(){
+    const savedData = localStorage.getItem('bookData');
+    if(savedData){
+        const data = JSON.parse(savedData);
+        displayData(data);
+    }
+}
+
 function bookSearch(){
     var search = document.getElementById('search').value
     document.getElementById('results').innerHTML=""
@@ -7,19 +16,22 @@ function bookSearch(){
         type: 'GET',
 
         success: function(data){
-            // results.innerHTML = "";
-            // for(var i = 0; i < data.items.length; i++){
-            //     results.innerHTML += "<div class='book'>" + "<h2>" + data.items[i].volumeInfo.title + "</h2>" + "</div>";            
-            // }
-            var template = document.getElementById("template").innerHTML;
-            var compiledTemplate = Handlebars.compile(template);
-            var ourHTML = compiledTemplate(data);
-            var results = document.getElementById("results");
-            results.innerHTML = ourHTML;
+            //Saves data to local storage, for onload function above
+           localStorage.setItem('bookData', JSON.stringify(data));
+           displayData(data);
         },
     });
 }
 
+function displayData(data){
+    var template = document.getElementById("template").innerHTML;
+    var compiledTemplate = Handlebars.compile(template);
+    var ourHTML = compiledTemplate(data);
+    var results = document.getElementById("results");
+    results.innerHTML = ourHTML;
+}
+
+//Helper functions allows you to use functions inside the handlebars script, otherwise everything inside has to be html or handlebars
 Handlebars.registerHelper('generateLink', 
     function(title, id) {
         //replace spaces in the book's title with underscores
