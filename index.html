@@ -3,21 +3,67 @@
 <head>
     <title>GOODER READS</title>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <h1 id="header">Book Finder</h1>
-    <input id="search" placeholder="Title or Author">
-    <button id="button" type="button">Search</button> 
-
-    <div id="results"></div>
+    <div class="headerContainer">
+        <h1 id="header">Book Finder</h1>
+        <div class='searchbox'>
+            <input id ='search' placeholder="Search by Title, Author, or both">
+            <!-- <button id="button" type="button">Explore!</button> -->
+        </div>
+    </div>
+ <!-- 11/11 Daily top 100: Phaedrus, eleanor and park, the four loves, etc. -->
+    <div class="container">
+        <div class="navbar">
+            <h3>Browse</h3>
+            <div class="nav-item">
+                <a href="">💕 Romance</a>
+            </div>
+            <div class="nav-item">
+                <a href="">🌈 Fantasy</a>
+            </div>
+            <div class="nav-item">
+                <a href="">👽 Fiction</a>
+            </div>
+            <div class="nav-item">
+                <a href="">Kids</a>
+            </div>
+            <div class="nav-item">
+                <a href="">Young Adult</a>
+            </div>
+            <h3>Your Shelf</h3>
+        </div>
+        <div id="search-results">
+            <div id="results"></div>
+        </div>
+        <div id="topsellers">
+            <h2>New York Times Bestsellers</h2>
+            <div class="top-display" id="hardcover_fiction">
+                <div class="section-header">
+                    <h3>Hardcover Fiction</h3>
+                </div>
+                <div class="section-body">
+                    <div class="displayItem">
+                        <img src='thebookofbill.jpg'>
+                        <a href="">TITLE</a><br>
+                        <a href="">AUTHOR</a>
+                    </div>
+                    <div class="displayItem">Book</div>
+                    <div class="displayItem">Book</div>
+                    <div class="displayItem">Book</div>
+                    <div class="displayItem">Book</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="main.js"></script>
+    <py-script src="scraper.py"></py-script>
 
     <!-- observations for later: link example: 
      https://www.google.com/books/edition/Harry_Potter_and_the_Sorcerer_s_Stone/wrOQLV6xB-wC?hl=en&gbpv=0
@@ -28,11 +74,16 @@
 
     <script id="template" type="text/x-handlebars-template">
         <div class="bookContainer">
-            {{#each items}} 
+            {{#each items}}
                 <div class="book">
-                    <a href='{{generateLink volumeInfo.title id}}'>
+                    <a href='{{titleLink volumeInfo.title id}}'>
                         <img src="{{volumeInfo.imageLinks.thumbnail}}">
                     </a>
+                    <div class="book-info">
+                        <h2><a href='{{titleLink volumeInfo.title id}}'>{{volumeInfo.title}}</a></h2>
+                        <h4><a href='{{authorLink volumeInfo.authors}}'>{{volumeInfo.authors}}</a></h4>
+                        <p>{{volumeInfo.description}}</p>
+                    </div>
                 </div>
             {{/each}}
         </div>

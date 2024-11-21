@@ -1,21 +1,124 @@
+/* -----------------TITLE AND SEARCH BOX---------------- */
+body{
+    /* background-color: #f0f4fa; */
+}
+.headerContainer{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center; /* this is for centering things vertically */
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
 #header{
-    text-align: center;
+    font-family: 'Papyrus', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+}
+#search{
+    width: 100%;
+    height: 3vh;
+    border-radius: 15px;
+    background-color: #f4f4f4;
 }
 #button{
-    margin: 20px;
+    height: 3.5vh;
+    cursor: pointer;
+    border-radius: 15px;
 }
-.book{
+.searchbox{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 40px;
+}
+@media (max-width: 768px){
+    #headerContainer{
+        flex-direction: column;
+    }
+    #search{
+        width: auto;
+    }
+}
+/* -------------------------TOP 100-------------------- */
+#topsellers{
+    width: 100%;
+    margin-left: 30px;
+    height: 20vh;
+}
+.displayItem{
+    display: inline-block;
+    background-color: black;
     width: 12%;
-    height: 30%;
+    height: 10vh;
+    margin-right: 15px;
+    border-radius: 15px;
     text-align: center;
 }
+.section-body{
+    display: flex;
+}
+.top-display{
+    overflow-x: auto;
+    display: block;
+}
+/* --------------------SEARCH DISPLAY------------------ */
 .bookContainer{
-    margin: 0 10%;
+    margin: 0 3%;
+    width: 88%;
     height: 90vh;
-    gap: 2em;
     display: flex;
     flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: center;
-    border: 1px solid white;
+    /* align-content: flex-start; */
+}
+.book{
+    display: flex;
+    border-radius: 15px;
+    background-color: #f0f4fa;
+    margin: 0.75% 0;
+    width: 100%;
+}
+.book-info{
+    margin: 0 10px;
+}
+.book-info a{
+    text-decoration: none;
+    color: black;
+}
+.container{
+    display: flex;
+    width: 100%;
+}
+#search-results{
+    display: none;
+    width: 88%;
+    /* flex: 1; */
+}
+/* ------------------------NAVBAR-------------------- */
+.navbar{
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ddd;
+    width: 12%;
+    border-radius: 15px;
+}
+.nav-item a{
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px;
+    border-radius: 10px;
+    transform: background-color 0.5s;
+}
+.nav-item a:hover{
+    background-color: #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navbar h3 {
+    font-size: 14px;
+    color: rgb(97, 81, 81);
+    margin: 30px;
+}
+.nav-item {
+    padding: 5px 15px;
+    margin-bottom: 10px;
 }
