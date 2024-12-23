@@ -9,50 +9,51 @@
 </head>
 <body>
     <div class="headerContainer">
-        <h1 id="header">Book Finder</h1>
         <div class='searchbox'>
             <input id ='search' placeholder="Search by Title, Author, or both">
             <!-- <button id="button" type="button">Explore!</button> -->
         </div>
     </div>
  <!-- 11/11 Daily top 100: Phaedrus, eleanor and park, the four loves, etc. -->
-    <div class="container">
-        <div class="navbar">
-            <h3>Browse</h3>
-            <div class="nav-item">
-                <a href="">💕 Romance</a>
-            </div>
-            <div class="nav-item">
-                <a href="">🌈 Fantasy</a>
-            </div>
-            <div class="nav-item">
-                <a href="">👽 Fiction</a>
-            </div>
-            <div class="nav-item">
-                <a href="">Kids</a>
-            </div>
-            <div class="nav-item">
-                <a href="">Young Adult</a>
-            </div>
-            <h3>Your Shelf</h3>
-        </div>
+    <!-- <div class="container"> -->
+        <aside>
+            <nav class="navbar">
+                <ul>
+                    <h1 id="header">Book Finder</h1>
+                    <h3>Browse</h3>
+                    <li class="nav-item search" id="active" onclick="setActive('search')">
+                        <a href="#search">🔍 Search</a>
+                    </li>
+                    <li class="nav-item fiction" onclick="setActive('fiction')">
+                        <a href="#fiction">🏰Fiction</a>
+                    </li>
+                    <li class="nav-item nonfiction" onclick="setActive('nonfiction')">
+                        <a href="#nonfiction">📏 Nonfiction</a>
+                    </li>
+                    <li class="nav-item advice" onclick="setActive('advice')">
+                        <a href="#advice">🧭 Advice, How-to, Misc.</a>
+                    </li>
+                    <li class="nav-item hardcover_children" onclick="setActive('hardcover_children')">
+                        <a href="#hardcover_children">🧸 Kids</a>
+                    </li>
+                    <li class="nav-item children_YA" onclick="setActive('children_YA')">
+                        <a href="#children_YA">🎓 Young Adult</a>
+                    </li>
+                    <h3>Your Shelf</h3>
+                </ul>
+            </nav>
+        </aside>
         <div id="search-results">
             <div id="results"></div>
         </div>
         <div id="topsellers">
             <h1>New York Times Bestsellers</h1>
-            <div id="bestsellers-display"></div>
-                <div class='genre-container' id="hardcover_fiction">
-                    <h2>Hardcover Fiction</h2>
+            <div id="bestsellers-display">
+                <div class='genre-container' id="fiction">
+                    <h2>Fiction</h2>
                 </div>
-                <div class='genre-container' id="hardcover_nonfiction">
-                    <h2>Hardcover Nonfiction</h2>
-                </div>
-                <div class='genre-container' id="paperback_fiction">
-                    <h2>Paperback Fiction</h2>
-                </div>
-                <div class='genre-container' id="paperback_nonfiction">
-                    <h2>Paperback Nonfiction</h2>
+                <div class='genre-container' id="nonfiction">
+                    <h2>Nonfiction</h2>
                 </div>
                 <div class='genre-container' id="advice">
                     <h2>Advice, How-To and Miscellaneous</h2>
@@ -69,8 +70,9 @@
                 <div class='genre-container' id="hardcover_YA">
                     <h2>Young Adult Hardcover</h2>
                 </div>
+            </div>
         </div>
-    </div>
+    <!-- </div> -->
 
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>

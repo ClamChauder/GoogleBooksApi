@@ -1,6 +1,10 @@
 /* -----------------TITLE AND SEARCH BOX---------------- */
 body{
-    /* background-color: #f0f4fa; */
+    background-color: #f0f4fa;
+}
+html{
+    /* makes the page scroll smoothly to navbar content instead of instantly jumping there */
+    scroll-behavior: smooth;
 }
 .headerContainer{
     display: flex;
@@ -10,6 +14,7 @@ body{
     margin-bottom: 20px;
 }
 #header{
+    font-size: 25px;
     font-family: 'Papyrus', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
 }
@@ -18,6 +23,7 @@ body{
     height: 3vh;
     border-radius: 15px;
     background-color: #f4f4f4;
+    margin-left: 13%;
 }
 #button{
     height: 3.5vh;
@@ -83,70 +89,83 @@ body{
     text-decoration: none;
     color: black;
 }
-.container{
+/* .container{
     display: flex;
     width: 100%;
-}
+} */
 #search-results{
     display: none;
     width: 88%;
+    padding-left: 15%;
     /* flex: 1; */
 }
 /* ------------------------NAVBAR-------------------- */
 .navbar{
     display: flex;
-    flex-direction: column;
-    background-color: #f4f4f4;
+    /* flex-direction: column; */
+    /* background-color: #f4f4f4; */
     border-right: 1px solid #ddd;
-    width: 10%;
-    border-radius: 15px;
+    top: 0;
+    width: 14%;
+    height: 100%;
+    position: fixed;
+    /* overflow: auto; */
+}
+li{
+    list-style-type: none;
 }
 .nav-item a{
     text-decoration: none;
+    font-size: 17px;
     color: black;
     display: block;
     padding: 10px;
     border-radius: 10px;
-    transform: background-color 0.5s;
+    /* transform: background-color 0.5s; */
+}
+#active a{
+    background-color: black;
+    color: white;
 }
 .nav-item a:hover{
     background-color: #ddd;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 .navbar h3 {
-    font-size: 14px;
-    color: rgb(97, 81, 81);
-    margin: 30px;
+    font-size: 20px;
+    /* margin: 30px; */
 }
 .nav-item {
     padding: 5px 15px;
     margin-bottom: 10px;
 }
 /* --------------------------BESTSELLERS CONTAINER-------------------------- */
+#topsellers{
+    width: 80%;
+    padding-left: 15%;
+}
 .genre-container{
     display: flex;
     flex-wrap: wrap;
-    /* border: 1px solid black; */
 }
 .bestseller-book{
-    display: flex;
+    display: block;
     border-radius: 15px;
-    background-color: #f0f4fa;
+    background-image: linear-gradient(#a5e2e7, white);
     margin: 0.5% 0.75%;
-    height: 200px;
-    width: 20%;
+    width: 50%;
+}
+.bestseller-book img{
+    height: 60%;
+    width: 85%;
+    align-self: center;
 }
 .bestseller-book p{
     margin: 10px;
     font-size: 14px;
     white-space: wrap;
-    overflow: hidden;
-    text-overflow: clip;
 }
 .nyt-books{
     display: flex;
     width: 100%;
-    /* border: 1px solid black; */
-}
-.nyt-books img{
 }

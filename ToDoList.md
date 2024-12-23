@@ -1,1 +1,2 @@
 - [x] test
+- [] Make each book section in the bestsellers display bigger, more colorful, and have then overflow off the page with a scroller.

@@ -1,7 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
-from flask import Flask, jsonify
-from flask_cors import CORS
+import json
+# from flask import Flask, jsonify
+# from flask_cors import CORS
 
 #finds titles, authors, and descriptions based on html tags
 #returns a list of books
@@ -37,28 +38,29 @@ def scrape_nyt():
                 'description': descs[book],
                 'images': images[book]
             })
-        books = books[10:]
-        return books
+        del books[10:30]
+        with open('books.json', 'w+') as f:
+            f.write(json.dumps(books))
     else:
         print("Failed to retrieve data. Status code:", response.status_code)
 
-app = Flask(__name__)
-CORS(app)
+# app = Flask(__name__)
+# CORS(app)
 bestsellers = []
 
 
-@app.route('/update_bestsellers')
-def update_bestsellers():
-    global bestsellers
-    bestsellers = scrape_nyt()
-    return jsonify({'message': "Data updated"})
+# @app.route('/update_bestsellers')
+# def update_bestsellers():
+#     global bestsellers
+#     bestsellers = scrape_nyt()
+#     return jsonify({'message': "Data updated"})
 
-@app.route('/bestsellers')
-def get_bestsellers():
-    return jsonify(bestsellers)
+# @app.route('/bestsellers')
+# def get_bestsellers():
+#     return jsonify(bestsellers)
 
 if __name__ == '__main__':
     bestsellers = scrape_nyt()
-    app.run(debug=True)
+    # app.run(debug=True)
 
     
