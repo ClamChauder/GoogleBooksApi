@@ -5,13 +5,45 @@
     <meta charset="UTF-8">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="book.jpg">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
     <div class="headerContainer">
         <div class='searchbox'>
-            <input id ='search' placeholder="Search by Title, Author, or both">
-            <!-- <button id="button" type="button">Explore!</button> -->
+            <input id ='search' placeholder="Search by Title or Author">
+                <!-- <button id="button" type="button">Explore!</button> -->
+        </div>
+        <div class="dropdown">
+            <button class="filter-btn" onclick="dropdown()">Subject &#9660
+            </button>
+            <div id="dropdown" class="filter-options">
+                <div class="subjectSearch" onclick="subjectSearch('action')">Action</div>
+                <div class="subjectSearch" onclick="subjectSearch('adventure')">Adventure</div>
+                <div class="subjectSearch" onclick="subjectSearch('Autobiography')">Autobiography</div>
+                <div class="subjectSearch" onclick="subjectSearch('biography')">Biography</div>
+                <div class="subjectSearch" onclick="subjectSearch('classics')">Classics</div>
+                <div class="subjectSearch" onclick="subjectSearch('coming of age')">Coming of Age</div>
+                <div class="subjectSearch" onclick="subjectSearch('dystopian fiction')">Dystopian Fiction</div>
+                <div class="subjectSearch" onclick="subjectSearch('fantasy')">Fantasy</div>
+                <div class="subjectSearch" onclick="subjectSearch('historical fiction')">Historical Fiction</div>
+                <div class="subjectSearch" onclick="subjectSearch('horror')">Horror</div>
+                <div class="subjectSearch" onclick="subjectSearch('medical')">Medical</div>
+                <div class="subjectSearch" onclick="subjectSearch('music')">Music</div>
+                <div class="subjectSearch" onclick="subjectSearch('mystery')">Mystery</div>
+                <div class="subjectSearch" onclick="subjectSearch('nature')">Nature</div>
+                <div class="subjectSearch" onclick="subjectSearch('philosophy')">Philosophy</div>
+                <div class="subjectSearch" onclick="subjectSearch('poetry')">Poetry</div>
+                <div class="subjectSearch" onclick="subjectSearch('political science')">Political Science</div>
+                <div class="subjectSearch" onclick="subjectSearch('psychology')">Psychology</div>
+                <div class="subjectSearch" onclick="subjectSearch('religion')">Religion</div>
+                <div class="subjectSearch" onclick="subjectSearch('romance')">Romance</div>
+                <div class="subjectSearch" onclick="subjectSearch('science fiction')">Science Fiction</div>
+                <div class="subjectSearch" onclick="subjectSearch('self-help')">Self-help</div>
+                <div class="subjectSearch" onclick="subjectSearch('thriller')">Thriller</div>
+                <div class="subjectSearch" onclick="subjectSearch('true crime')">True Crime</div>
+                <div class="subjectSearch" onclick="subjectSearch('time travel')">Time Travel</div>
+            </div>
         </div>
     </div>
  <!-- 11/11 Daily top 100: Phaedrus, eleanor and park, the four loves, etc. -->
@@ -19,7 +51,7 @@
         <aside>
             <nav class="navbar">
                 <ul>
-                    <h1 id="header">Book Finder</h1>
+                    <h1 id="header" onclick="homeMenu()">Book Finder</h1>
                     <h3>Browse</h3>
                     <li class="nav-item search" id="active" onclick="setActive('search')">
                         <a href="#search">🔍 Search</a>

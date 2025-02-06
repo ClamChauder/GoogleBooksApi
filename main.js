@@ -7,6 +7,7 @@ window.onload = function(){
     }
 }
 
+// READING THE .JSON FILE WHERE THE SCRAPER PUTS THE BESTSELLER INFO
 document.addEventListener('DOMContentLoaded',function(){
     fetch('books.json')
     .then(response => {
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded',function(){
         return response.json();
     })
     .then(data => {
-            //Displays 5 books in the div with id name 'hardcover_fiction' using handlebars template
+            //Displays 5 books in the div with the given id name using handlebars template
             displayBestSellers(document.getElementById('fiction'), data.slice(0,5));
             displayBestSellers(document.getElementById('nonfiction'), data.slice(5,10));
             displayBestSellers(document.getElementById('advice'), data.slice(10,15));
@@ -30,10 +31,11 @@ document.addEventListener('DOMContentLoaded',function(){
     }); 
 })
 
+// highlights the active navbar tab 
 function setActive(name) {
     var currentActive = document.getElementById("active");
 
-    if (currentActive) {  // Check if the element is not null
+    if (currentActive) {  // Check if the element is not null. If yes, delete the 'active' id
         currentActive.removeAttribute('id');
     } else {
         console.log('Element with id ' + name + ' not found.');
@@ -70,6 +72,40 @@ function setActive(name) {
 //     });
 // })
 
+function dropdown(){
+    document.getElementById("dropdown").classList.toggle("show");
+}
+
+function subjectSearch(subject){
+    document.getElementById('results').innerHTML="";
+    var search_results = document.getElementById('search-results');
+        $.ajax({
+            url: "https://www.googleapis.com/books/v1/volumes?langRestrict=en&q=subject:" + subject + "&orderBy=newest",
+            dataType: "json",
+            type: 'GET',
+    
+            success: function(data){
+                //Saves data to local storage, for onload function above
+                sessionStorage.setItem('bookData', JSON.stringify(data));
+                //hides the best sellers display and replaces it with search results
+                topsellers.style.display = 'none';
+                search_results.style.display = 'flex';
+                displaySearch(data);
+            },
+        });
+    
+}
+
+//when you click on the "Book Finder" header, it sends you back to the bestsellers display(home menu) if it is not already displayed
+function homeMenu(){   
+    if(topsellers.style.display = 'none'){
+        topsellers.style.display = 'inline-block';
+        var search_results = document.getElementById('search-results');
+        search_results.style.display = 'none';
+    }
+
+}
+
 function bookSearch(event){
     if(event.key == 'Enter'){
         var search = document.getElementById('search').value
@@ -78,7 +114,7 @@ function bookSearch(event){
         //conducts the ajax request if theres something in the search bar
         if(search.trim() !== ''){
             $.ajax({
-                url: "https://www.googleapis.com/books/v1/volumes?q=" + search,
+                url: "https://www.googleapis.com/books/v1/volumes?q=" + search + "+intitle:" + search + "&orderBy=newest&langRestrict=en",
                 dataType: "json",
                 type: 'GET',
         

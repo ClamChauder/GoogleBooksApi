@@ -18,8 +18,11 @@ html{
     font-family: 'Papyrus', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
 }
+#header:hover{
+    cursor: pointer;
+}
 #search{
-    width: 100%;
+    width: 80%;
     height: 3vh;
     border-radius: 15px;
     background-color: #f4f4f4;
@@ -35,6 +38,41 @@ html{
     align-items: center;
     flex-grow: 1;
     margin-left: 40px;
+}
+/* -------------------------FILTER--------------------  */
+.filter-btn:hover, .filter-btn:focus{
+    background-color: #ddd;
+}
+.filter-btn{
+    width: 110%;
+    border-radius: 15px;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+    border-radius: 15px;
+}
+#dropdown div{
+    padding: 10px;
+    text-decoration: none;
+    color:  black;
+}
+#dropdown div:hover{
+    background-color: #ddd;
+    cursor: pointer;
+}
+.filter-options{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.show{
+    display: block;
+}
+.show a{
+    display: block;
 }
 @media (max-width: 768px){
     #headerContainer{
@@ -151,7 +189,7 @@ li{
 .bestseller-book{
     display: block;
     border-radius: 15px;
-    background-image: linear-gradient(#a5e2e7, white);
+    /* background-image: linear-gradient(#a5e2e7, white); */
     margin: 0.5% 0.75%;
     width: 50%;
 }
