@@ -163,6 +163,13 @@ Handlebars.registerHelper('titleLink',
         return link;
 });
 
+Handlebars.registerHelper('titleLink2', 
+    function(title, author) {
+        //forms the url for the title page
+        var link = "https://www.google.com/search?q=" + title + "&inauthor:" + author; 
+        return link;
+});
+
 //Generates the link to search by author
 Handlebars.registerHelper('authorLink', 
     function(author) {

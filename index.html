@@ -122,8 +122,12 @@
         <div class="nyt-books">
             {{#each this}}
                <div class="bestseller-book"> 
-                    <img src="{{images}}">
-                    <p>{{title}} <br> by {{author}} <br><br> {{description}}</p>
+                    <a href="{{titleLink2 title author}}"><img src="{{images}}"></a>
+                    <p>
+                        <a href="{{titleLink2 title author}}" class="search-bestsellers-a" id="title">{{title}}</a> <br> 
+                        by <a href="{{authorLink author}}" class="search-bestsellers-a" id="author">{{author}}</a> <br> 
+                        {{description}}
+                    </p>
                 </div>
             {{/each}}
         </div>
