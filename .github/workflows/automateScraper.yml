@@ -3,6 +3,7 @@ name: Update Book Listings
 on:
   schedule:
     - cron: '30 12 * * *'  # Runs at 12:00 PM UTC every day
+  workflow_dispatch:
 
 jobs:
   update_books:
