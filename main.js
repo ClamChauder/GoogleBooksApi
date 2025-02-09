@@ -9,7 +9,7 @@ window.onload = function(){
 
 // READING THE .JSON FILE WHERE THE SCRAPER PUTS THE BESTSELLER INFO
 document.addEventListener('DOMContentLoaded',function(){
-    fetch('books.json')
+    fetch('books.json?timestamp=${new Date().getTime()}')
     .then(response => {
         if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
