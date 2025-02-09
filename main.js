@@ -48,30 +48,6 @@ function setActive(name) {
     }
 }    
 
-// JSON DATA REFERENCE LINK: https://www.googleapis.com/books/v1/volumes?q=harrypotter
-
-//Displays NYT bestsellers
-// document.addEventListener('DOMContentLoaded', function(){
-//     $.ajax({
-//         url: 'http://127.0.0.1:5000/bestsellers',
-//         dataType: 'json',
-//         type: 'GET',
-
-//         success: function(data){
-//             //Displays 5 books in the div with id name 'hardcover_fiction' using handlebars template
-//             displayBestSellers(document.getElementById('hardcover_fiction'), data.slice(0,5));
-//             displayBestSellers(document.getElementById('hardcover_nonfiction'), data.slice(5,10));
-//             displayBestSellers(document.getElementById('paperback_fiction'), data.slice(10,15));
-//             displayBestSellers(document.getElementById('paperback_nonfiction'), data.slice(15,20));
-//             displayBestSellers(document.getElementById('advice'), data.slice(20,25));
-//             displayBestSellers(document.getElementById('hardcover_children'), data.slice(25,30));
-//             displayBestSellers(document.getElementById('children_picture'), data.slice(30,35));
-//             displayBestSellers(document.getElementById('children_YA'), data.slice(35,40));
-//             displayBestSellers(document.getElementById('hardcover_YA'), data.slice(40,45));
-//         }
-//     });
-// })
-
 function dropdown(){
     document.getElementById("dropdown").classList.toggle("show");
 }

@@ -1,19 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-# from flask import Flask, jsonify
-# from flask_cors import CORS
 
 #finds titles, authors, and descriptions based on html tags
 #returns a list of books
 def scrape_nyt():
     url = "https://www.nytimes.com/books/best-sellers/"
-    # headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
     response = requests.get(url)
-
-    # print(response.status_code)
-    # print(response.headers)
-    # print(response.text[:1000])  # Print the first 1000 characters of the response body
 
     if response.status_code == 200:
         parsed = BeautifulSoup(response.text, 'html.parser')
@@ -38,29 +31,14 @@ def scrape_nyt():
                 'description': descs[book],
                 'images': images[book]
             })
-        del books[10:30]
+        del books[10:30] # first 10 items are ebooks
         with open('books.json', 'w+') as f:
             f.write(json.dumps(books))
     else:
         print("Failed to retrieve data. Status code:", response.status_code)
 
-# app = Flask(__name__)
-# CORS(app)
+
 bestsellers = []
-
-
-# @app.route('/update_bestsellers')
-# def update_bestsellers():
-#     global bestsellers
-#     bestsellers = scrape_nyt()
-#     return jsonify({'message': "Data updated"})
-
-# @app.route('/bestsellers')
-# def get_bestsellers():
-#     return jsonify(bestsellers)
 
 if __name__ == '__main__':
     bestsellers = scrape_nyt()
-    # app.run(debug=True)
-
-    
